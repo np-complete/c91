@@ -24,9 +24,9 @@ Chrome Extensionのコードを読むときは、 まず最初に **manifest.jso
 
 [^1]: 実際には app/manifest.json にある
 
-## ContentScript を読む
+## Content Script を読む
 
-`app/scripts/contentscript.js` ではなく、
+manifestに書かれている `app/scripts/contentscript.js` ではなく、
 変換前のファイルである `app/scripts.babel/contentscript.js` を読みます。
 
 クソコードがダラっと書かれていますが、
@@ -35,26 +35,28 @@ Chrome Extensionのコードを読むときは、 まず最初に **manifest.jso
 ひとつ明らかに違うところは、 `manifest.json` の `"run_at": "document_end"` の指定により、必ずページが読み込まれたあとに実行されることが保証されている点です。
 `$(document).ready` 的なコードは必要ありません。
 
-## ContentScriptのデバッグ方法
+## Content Scriptのデバッグ方法
 
-ContentScriptをデバッグするには、該当するWebページを開き、Developer Toolsを起動します。
-Sourcesタブを選択すると、ファイル一覧が表示されるゾーンに `[ContentScripts]` のタブがあることに気づくでしょう。
+Content Scriptをデバッグするには、該当するWebページを開き、Developer Toolsを起動します。
+Sourcesタブを選択すると、ファイル一覧が表示されるゾーンに `[Content scripts]` のタブがあることに気づくでしょう。
 その中から該当するExtensionを選び、デバッグしたいファイルを選択します。
 あとは普段のDeveloper Toolsと同じです。
 
-## ContentScriptでできないこと
+## Content Scriptでできないこと
 
-サンプルのように、ContentScriptはDOMにアクセスできますが、
-一方でサイトが本来持っているJavaScriptには全くアクセスできません。
-より正確には、サイト側のJavaScript実行環境とContentScript側のJavaScript実行環境は、**完全に別世界**だと考えれば良いと思います。
+サンプルのように、Content ScriptはDOMにアクセスできますが、
+一方でサイトが本来持っている**JavaScriptには全くアクセスできません**。
+より正確には、サイト側のJavaScript実行環境とContent Script側のJavaScript実行環境は、**完全に別世界**だと考えれば良いと思います。
 実際にアプリケーションを作る際はこの制約がだいぶ障害になるでしょう。
 
-例えばサイト側で `window` オブジェクトに変数や関数を設定していても、ContentScriptからはアクセスできません。
+例えばサイト側で `window` オブジェクトに変数や関数を設定していても、Content Scriptからはアクセスできません。
 サイト上にあるオブジェクトにEventListenerを**追加することはできます**が、
 サイト側で設定されたEventListenerを**削除することはできません**。
-ContentScriptで追加したEventLitenerで、**イベントの伝搬を阻止**[^2] しようとしても、別世界なので止めることはできません。
+Content Scriptで追加したEventLitenerで、**イベントの伝搬を阻止**[^2] しようとしても、別世界なので止めることはできません。
 既存のボタンの動作を変更したり、キーバインドを変更したりするのは難しいということです。
-DOMに対してイベントを発行することはできるので、上手く利用してください。[^3]
+
+ひとつだけ例外があり、DOMに対してイベントを発行すると、サイト側のJavaScriptで登録されたイベントリスナも反応してくれます。
+直接関数が呼べず回りくどいですが、上手く利用すれば様々なことが実現できます。[^3]
 
 [^2]: stopPropagationとかpreventDefaultとかの例のお約束
 [^3]: fuck-catalogのaddCheckとremoveCheckを参照
