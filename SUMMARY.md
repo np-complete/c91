@@ -5,3 +5,4 @@
 - [Webサイトをカスタマイズしよう](customize-website.md)
 - [アイコンに動作を設定しよう](click-icon.md)
 - [構成要素まとめ](stages.md)
+- [Chrome Extensionを作ってみよう](hands-on.md)
