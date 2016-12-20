@@ -6,8 +6,8 @@ Chrome Extensionは、Chromeの持つ[JavaScript API](https://developer.chrome.c
 APIにはブラウザを操作する様々な機能が用意されています。
 タブを操作する `tabs` やブックマークを操作する `bookmarks` などは想像しやすいでしょう。
 Extension自体を情報を取得したり操作する[^1] `browserAction` や `pageAction` などのメタメタしいAPI、
-Extensionの司令塔のような役割をする `chrome.runtime` というとても重要APIもあります。
-他には、`identity`[^2] や `gcm`[^3] などの、スマートフォンアプリ方面でその地位を確立したAPIなども多数あります。
+Extensionのメインプロセスと言える `chrome.runtime` というとても重要なAPIもあります。
+他には、`identity`[^2] や `gcm`[^3] などの、スマートフォンアプリ方面に起源があるAPIなども多数輸入されています。
 
 もちろん、それ以外にもchromeのJavaScriptで元々できることはなんでもできます。
 例えば、DOM操作のAPIはExtensionのAPI一覧には用意されていませんが、
