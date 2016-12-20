@@ -26,7 +26,7 @@ Chrome Extensionプロジェクトの雛形を作る便利なライブラリが�
 
     mkdir my-extension
     cd my-extension
-    yo chrome-extensino
+    yo chrome-extension
 
 いろいろオプションを聞かれますがとりあえず何も考えずにEnterを押しましょう。
 いくつかファイルが作られているはずです。

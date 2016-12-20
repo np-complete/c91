@@ -22,7 +22,7 @@ Chrome Extensionをインストールすると、ツールバー[^1]にずらっ
 
     ? Would you like to use UI Action?
       No
-    ❯ Browser Action
+    > Browser Action
       Page Action
 
 と聞かれるので上手く答えてあげてください。
@@ -106,9 +106,11 @@ chrome.runtime.sendMessage({url: url}, response => {
 ```
 
 メッセージは例えば
+
 ```json
  { "url": "http://www.nicovideo.jp/watch/sm9" }
 ```
+
 のようになります。
 
 これを `background.js` で同じように受け取ります。
