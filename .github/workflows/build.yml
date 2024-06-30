@@ -1,0 +1,23 @@
+name: build
+on:
+  pull_request:
+    branches: "**"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: np-complete/build-book-action@v1
+        with:
+          config: config.ebook.yml
+      - uses: actions/upload-artifact@v4
+        with:
+          name: book
+          path: book.pdf
+  textlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: tsuyoshicho/action-textlint@v3
+        with:
+          fail_on_error: true
