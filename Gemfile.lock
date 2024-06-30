@@ -1,19 +1,27 @@
-GIT
-  remote: git://github.com/masarakki/review.git
-  revision: 9451fd090e0db74934dd15c471079d08e499b88d
-  branch: fix-strong-for-ja-characters
-  specs:
-    review (2.1.0)
-      rubyzip
-
 GEM
   remote: https://rubygems.org/
   specs:
-    md2review (1.7.0)
+    image_size (3.4.0)
+    md2review (1.12.1)
       redcarpet (> 2.0.0)
-    rake (12.0.0)
-    redcarpet (3.3.4)
-    rubyzip (1.2.0)
+    pastel (0.8.0)
+      tty-color (~> 0.5)
+    rake (13.2.1)
+    redcarpet (3.6.0)
+    review (5.9.0)
+      image_size
+      rexml
+      rouge
+      rubyzip
+      tty-logger
+    rexml (3.3.1)
+      strscan
+    rouge (4.3.0)
+    rubyzip (2.3.2)
+    strscan (3.1.0)
+    tty-color (0.6.0)
+    tty-logger (0.6.0)
+      pastel (~> 0.8)
 
 PLATFORMS
   ruby
@@ -21,7 +29,7 @@ PLATFORMS
 DEPENDENCIES
   md2review
   rake
-  review (= 2.1.0)!
+  review
 
 BUNDLED WITH
    1.12.5
