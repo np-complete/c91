@@ -9,7 +9,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: np-complete/build-book-action@v1
         with:
-          config: config.ebook.yml
+          config: config.yml
       - uses: actions/upload-artifact@v4
         with:
           name: book
