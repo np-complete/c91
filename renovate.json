@@ -22,9 +22,12 @@
       "groupName": "github-actions"
     },
     {
-      "matchPackagePatterns": ["^actions/", "^np-complete/"],
       "minimumReleaseAge": null,
-      "automerge": true
+      "automerge": true,
+      "matchPackageNames": [
+        "/^actions//",
+        "/^np-complete//"
+      ]
     }
   ],
   "vulnerabilityAlerts": {
